@@ -28,5 +28,9 @@ RUN mkdir -p uploads/gallery static/uploads/gallery
 # Expose the server port
 EXPOSE 8080
 
+# Health check endpoint for Back4App
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/ || exit 1
+
 # Start Gunicorn with optimized settings for Back4App
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "--timeout", "120", "--keep-alive", "5", "main:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "--timeout", "120", "--keep-alive", "5", "--access-logfile", "-", "--error-logfile", "-", "main:app"]

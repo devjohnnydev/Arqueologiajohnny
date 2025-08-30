@@ -1,0 +1,40 @@
+{
+  "deployment": {
+    "platform": "Back4App",
+    "type": "Container as a Service",
+    "repository": "https://github.com/devjohnnydev/Arqueologiajohnny.git",
+    "branch": "main",
+    "root_directory": "/",
+    "port": 8080,
+    "auto_deploy": true,
+    "health_check_url": "/",
+    "dockerfile_path": "./Dockerfile"
+  },
+  "environment_variables": {
+    "required": {
+      "SESSION_SECRET": "sua-chave-secreta-super-forte-aqui",
+      "FLASK_ENV": "production"
+    },
+    "optional": {
+      "LOG_LEVEL": "INFO",
+      "MAX_CONTENT_LENGTH": "16777216"
+    },
+    "database": {
+      "note": "DATABASE_URL será criada automaticamente pelo Back4App PostgreSQL"
+    }
+  },
+  "database": {
+    "type": "PostgreSQL",
+    "managed_by": "Back4App",
+    "auto_created": true,
+    "connection_pooling": true
+  },
+  "features": {
+    "file_uploads": true,
+    "multilingual_support": true,
+    "user_authentication": true,
+    "admin_panel": true,
+    "3d_scanner_integration": true,
+    "gallery_management": true
+  }
+}
