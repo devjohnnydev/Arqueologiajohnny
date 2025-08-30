@@ -4,7 +4,7 @@
     "builder": "nixpacks"
   },
   "deploy": {
-    "startCommand": "gunicorn -w 4 -b 0.0.0.0:$PORT app:app",
+    "startCommand": "gunicorn --bind 0.0.0.0:$PORT --reuse-port --reload main:app",
     "healthcheckPath": "/",
     "healthcheckTimeout": 300,
     "restartPolicyType": "always"
