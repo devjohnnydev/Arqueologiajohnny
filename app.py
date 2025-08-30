@@ -36,7 +36,7 @@ app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "pool_recycle": 300,
     "pool_pre_ping": True,
     "connect_args": {"charset": "utf8mb4"} if database_url.startswith("sqlite") else {
-        "sslmode": "require" if database_url.startswith("postgresql") else {}
+        "sslmode": "prefer" if database_url.startswith("postgresql") else {}
     }
 }
 
