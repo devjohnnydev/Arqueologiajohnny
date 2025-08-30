@@ -7,9 +7,10 @@ from flask_babel import Babel, gettext, ngettext
 from sqlalchemy.orm import DeclarativeBase
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-# Configure logging (adjust for production)
-log_level = logging.DEBUG if os.environ.get('FLASK_ENV') != 'production' else logging.INFO
-logging.basicConfig(level=log_level)
+# Configure logging for Back4App production
+is_production = os.environ.get('FLASK_ENV') == 'production'
+log_level = logging.INFO if is_production else logging.DEBUG
+logging.basicConfig(level=log_level, format='%(asctime)s %(levelname)s: %(message)s')
 
 class Base(DeclarativeBase):
     pass
@@ -40,13 +41,15 @@ app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     }
 }
 
-# Configure upload settings (Railway-optimized)
+# Configure upload settings (Back4App optimized)
 upload_folder = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(upload_folder, exist_ok=True)
+static_upload_folder = os.path.join(os.getcwd(), 'static', 'uploads')
+os.makedirs(static_upload_folder, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = upload_folder
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 
-# Railway static files optimization
+# Back4App production optimization
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
 
 # Initialize extensions

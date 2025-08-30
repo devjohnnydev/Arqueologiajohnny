@@ -1,0 +1,58 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.env
+.venv
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+DEPLOY_RAILWAY.md
+replit.md
+
+# Local configuration
+.env.local
+.local/
+
+# Logs
+*.log
+
+# Development files
+.replit
+replit.nix
+requirements_back4app.txt
+
+# Railway specific
+railway.json
+Procfile
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads (they should be empty for deployment)
+uploads/gallery/*
+static/uploads/gallery/*
+
+# Lock files that might conflict
+uv.lock

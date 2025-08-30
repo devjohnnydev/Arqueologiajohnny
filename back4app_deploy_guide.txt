@@ -1,0 +1,50 @@
+========================================
+GUIA DE DEPLOY PARA BACK4APP - L.A.A.R.I
+========================================
+
+1. PREPARAÇÃO DOS ARQUIVOS ✓
+   - requirements_back4app.txt criado
+   - Dockerfile configurado
+   - .dockerignore criado
+   - Configurações otimizadas
+
+2. PASSO A PASSO DO DEPLOY:
+
+   a) Enviar para GitHub:
+      - Crie um repositório no GitHub
+      - Faça commit de todos os arquivos
+      - Push para o repositório
+
+   b) Configurar no Back4App:
+      - Acesse https://www.back4app.com/
+      - Faça login/cadastro
+      - Clique em "Create a new app"
+      - Escolha "Container as a Service"
+      - Conecte seu repositório GitHub
+      
+   c) Configurações no Back4App:
+      - Branch: main (ou master)
+      - Root Directory: /
+      - Port: 8080
+      - Enable auto-deploy: ✓
+
+   d) Variáveis de ambiente necessárias:
+      - SESSION_SECRET: sua-chave-secreta-aqui
+      - FLASK_ENV: production
+      - DATABASE_URL: (será fornecida pelo Back4App)
+
+3. APÓS O DEPLOY:
+   - Acesse sua aplicação via URL fornecida
+   - Teste todas as funcionalidades
+   - Configure o banco de dados PostgreSQL
+
+4. COMANDOS GIT SUGERIDOS:
+   git add .
+   git commit -m "Deploy para Back4App"
+   git push origin main
+
+OBSERVAÇÕES:
+- A aplicação está configurada para rodar na porta 8080
+- Banco de dados PostgreSQL será criado automaticamente
+- Upload de arquivos funcionará corretamente
+- Logs estarão disponíveis no dashboard do Back4App
